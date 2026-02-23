@@ -1,0 +1,425 @@
+/* CSS Reset & Variables */
+:root {
+    --primary-blue: #1b45ff;
+    --bg-light: #f4f6fa;
+    --text-main: #111111;
+    --text-muted: #444444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-light); /* Sekarang body berwarna terang */
+    overflow-x: hidden; /* Mencegah scroll menyamping */
+}
+
+/* --- Header / Navbar --- */
+.header {
+    background-color: transparent; /* Awalnya transparan */
+    position: fixed; /* Menjadi fixed agar menimpa background hero section */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transisi halus */
+}
+
+/* Class baru ini akan dipanggil oleh JavaScript saat layar di-scroll */
+.header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95); /* Berubah menjadi putih agak transparan */
+    backdrop-filter: blur(10px); /* Efek kaca/blur */
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05); /* Muncul bayangan */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+    transition: padding 0.3s ease;
+}
+
+/* Saat di-scroll, padding navbar sedikit mengecil agar terlihat lebih ramping */
+.header.scrolled .navbar {
+    padding: 15px 50px;
+}
+
+.nav-left { display: flex; align-items: center; }
+.logo { height: 60px; object-fit: contain; } 
+
+.nav-right { display: flex; gap: 35px; align-items: center; }
+.nav-right a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.3s;
+}
+.nav-right a:hover { color: var(--primary-blue); }
+
+/* --- Hero Section --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; /* Ubah ke 100vh agar penuh 1 layar */
+    background: radial-gradient(circle at 50% 20%, #ffffff 20%, #e0e8ff 60%, #5a7fff 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 130px; /* Diperbesar jarak atasnya karena navbar sekarang melayang menimpa bagian ini */
+    overflow: hidden; 
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 10;
+    position: relative;
+}
+
+.hero-content h1 {
+    font-size: 56px; 
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    max-width: 600px;
+    margin: 0 auto 35px auto;
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+}
+
+.btn-primary {
+    background-color: #000;
+    color: white;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 15px;
+    transition: opacity 0.3s;
+}
+.btn-primary:hover { opacity: 0.8; }
+
+.btn-icon {
+    background-color: #000;
+    color: white;
+    text-decoration: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    transition: opacity 0.3s;
+}
+.btn-icon:hover { opacity: 0.8; }
+
+/* Giant Background Text (Watermark) */
+.bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28vw;
+    font-weight: 800;
+    color: rgba(0, 0, 0, 0.03); 
+    line-height: 0.75;
+    letter-spacing: -10px;
+    z-index: 1; 
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+/* --- Laptop Mockup CSS --- */
+.laptop-wrapper {
+    position: relative;
+    margin: 60px auto 100px; /* Tambah margin bawah agar tidak menabrak section berikutnya */
+    z-index: 5;
+    width: 760px; 
+    perspective: 1000px; 
+    transform: scale(0.9); /* Dikecilkan sedikit agar fit di layar */
+}
+
+/* ... (Kode CSS Layar, Base, Browser Bar, dan Kartu Sertifikat TETAP SAMA seperti sebelumnya) ... */
+.laptop-screen { width: 100%; height: 450px; background: linear-gradient(135deg, #1b45ff 0%, #0a1f8f 100%); border-radius: 16px 16px 0 0; border: 12px solid #111; border-bottom: 15px solid #222; position: relative; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+.laptop-base { width: 112%; margin-left: -6%; height: 24px; background: #e4e4e7; border-radius: 2px 2px 16px 16px; position: relative; box-shadow: inset 0 -4px 6px rgba(0,0,0,0.1), 0 30px 60px rgba(0,0,0,0.4); }
+.laptop-trackpad { position: absolute; width: 100px; height: 6px; background: #a1a1aa; top: 0; left: 50%; transform: translateX(-50%); border-radius: 0 0 6px 6px; }
+.browser-bar { background: rgba(0, 0, 0, 0.3); padding: 12px 15px; display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.dots i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; }
+.dots i:nth-child(1) { background: #ff5f56; } 
+.dots i:nth-child(2) { background: #ffbd2e; } 
+.dots i:nth-child(3) { background: #27c93f; } 
+.url-bar { margin: 0 auto; color: white; font-size: 12px; opacity: 0.7; font-weight: 500; letter-spacing: 0.5px; }
+.screen-content { position: relative; width: 100%; height: calc(100% - 37px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; }
+.cert-card { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 16px; padding: 15px 24px; display: flex; align-items: center; justify-content: space-between; color: white; box-shadow: 0 10px 30px rgba(0,0,0,0.2); width: 80%; transition: transform 0.3s ease; }
+.cert-card:hover { transform: translateY(-5px); }
+.card-cert-1 { background: linear-gradient(90deg, rgba(82, 113, 255, 0.95) 0%, rgba(27, 69, 255, 0.7) 100%); }
+.card-cert-2 { background: rgba(17, 17, 17, 0.85); }
+.card-left { display: flex; align-items: center; gap: 15px; }
+.icon-circle { width: 44px; height: 44px; background: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: black; font-weight: bold; }
+.cert-info h4 { font-size: 16px; font-weight: 600; margin-bottom: 2px; }
+.cert-info p { font-size: 13px; opacity: 0.8; }
+.cert-status { display: flex; justify-content: center; align-items: center; }
+.badge-kompeten { background: rgba(74, 222, 128, 0.2); color: #4ade80; padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; letter-spacing: 1px; border: 1px solid rgba(74, 222, 128, 0.3); }
+.card-right { text-align: right; }
+.card-right h4 { font-size: 15px; font-weight: 600; }
+.card-right p { font-size: 12px; color: #e2e8f0; margin-top: 3px; }
+
+/* --- Section Baru: Tentang Kami --- */
+.about-section {
+    background-color: #ffffff; /* Latar belakang putih bersih */
+    padding: 100px 50px;
+    width: 100%;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 80px; /* Jarak antara gambar dan teks */
+}
+
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 350px; /* Menjaga ukuran gambar agar tidak terlalu besar */
+    object-fit: contain;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 25px;
+}
+
+.about-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.btn-outline {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 28px;
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+/* --- Section Footer --- */
+.footer {
+    background-color: #1a1e29; /* Warna latar belakang gelap (Navy/Dark Blue) */
+    color: #e2e8f0;
+    padding: 70px 50px 20px;
+    margin-top: 50px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr; /* Membagi menjadi 4 kolom dengan proporsi berbeda */
+    gap: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 40px;
+}
+
+.footer-col h4 {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+/* Kolom 1 (Brand) */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.footer-logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Membuat logo melingkar jika aslinya kotak */
+    object-fit: contain;
+    background: white; /* Memberi background putih agar logo terlihat jelas */
+    padding: 5px;
+}
+
+.footer-logo h3 {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.brand-col p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #cbd5e1;
+    margin-bottom: 25px;
+    padding-right: 20px;
+}
+
+/* Sosial Media Ikon Sederhana */
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+    transform: translateY(-3px); /* Efek melayang saat disorot */
+}
+
+/* Kolom Menu Links */
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 15px;
+}
+
+.footer-col ul li a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Menambahkan panah kecil sebelum teks menu */
+.footer-col ul li a::before {
+    content: "›";
+    font-size: 18px;
+    color: var(--primary-blue);
+}
+
+.footer-col ul li a:hover {
+    color: #ffffff;
+}
+
+/* Kolom Call to Action (Sertifikasi) */
+.cta-col p {
+    font-size: 14px;
+    color: #cbd5e1;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.btn-footer {
+    display: inline-block;
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-footer:hover {
+    background-color: #0a2ebf;
+    box-shadow: 0 5px 15px rgba(27, 69, 255, 0.4);
+}
+
+/* Bagian Bawah Copyright */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom p {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+.scroll-top {
+    width: 35px;
+    height: 35px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-top:hover {
+    opacity: 0.8;
+}
