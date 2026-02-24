@@ -1,0 +1,1024 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+/* --- Variabel Warna & Tema --- */
+:root {
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --bg-color: #ffffff;
+    --bg-light: #f3f4f6;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --card-bg: #ffffff;
+    --nav-bg: rgba(255, 255, 255, 0.95);
+    --border-color: #e5e7eb;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Dark Mode Variables */
+body.dark-mode {
+    --bg-color: #111827;
+    --bg-light: #1f2937;
+    --text-main: #f9fafb;
+    --text-muted: #d1d5db;
+    --card-bg: #374151;
+    --nav-bg: rgba(17, 24, 39, 0.95);
+    --border-color: #4b5563;
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+/* --- Reset & Base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background-color: var(--bg-light);
+}
+
+h1, h2, h3, h4 {
+    color: var(--text-main);
+    margin-bottom: 15px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+/* --- Typography & Buttons --- */
+p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+/* --- Navbar --- */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+    z-index: 1000;
+    transition: background 0.3s;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-main);
+    cursor: pointer;
+}
+
+#darkToggle {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+/* Dark Mode Toggle Button - Fixed Position */
+.dark-toggle-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+}
+
+.dark-toggle-btn:hover {
+    transform: scale(1.1) rotate(20deg);
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+    border-color: var(--primary-color);
+}
+
+/* --- Hero Section --- */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    margin-top: 0; /* Cover entire screen */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(79, 70, 229, 0.1) 0%, transparent 70%);
+    z-index: 2;
+    pointer-events: none;
+    animation: pulse 8s ease-in-out infinite;
+}
+
+.hero-slider {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+}
+
+.slide {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    color: #fff;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 20px;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: #e5e7eb;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* Slider Arrows */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    z-index: 4;
+    user-select: none;
+    padding: 10px;
+    transition: color 0.3s, transform 0.3s;
+    animation: float 4s ease-in-out infinite;
+}
+
+.arrow:hover {
+    color: #fff;
+    transform: translateY(-50%) scale(1.2);
+}
+
+.arrow.left { left: 20px; }
+.arrow.right { right: 20px; }
+
+/* --- About Section --- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-image {
+    display: flex;
+    justify-content: flex-end;
+    animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    transition: all 0.4s ease;
+}
+
+.about-image img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3);
+}
+
+.about-content h2 {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* --- Card Grids (Aspek, Skema, Berita) --- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* --- Bagian Daftar Skema Khusus --- */
+.scheme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.scheme-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: left;
+    animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.scheme-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(79, 70, 229, 0.2);
+}
+
+.scheme-image {
+    background-color: #f1f5f9; /* Warna abu-abu muda di belakang gambar */
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.scheme-image img {
+    max-width: 100%;
+    height: 180px;
+    object-fit: contain; /* Memastikan gambar tidak terpotong */
+    transition: transform 0.3s ease;
+}
+
+.scheme-card:hover .scheme-image img {
+    transform: scale(1.1);
+}
+
+/* Lingkaran kecil "3D" yang mengambang */
+.scheme-badge {
+    position: absolute;
+    bottom: -20px;
+    right: 20px;
+    background: var(--card-bg);
+    color: var(--text-main);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+.scheme-content {
+    padding: 25px 20px 20px;
+}
+
+.scheme-category {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.scheme-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 25px;
+    color: var(--text-main);
+}
+
+/* Footer kartu (Klaster, Level, View) */
+.scheme-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.scheme-footer span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Penyesuaian Dark Mode untuk background gambar skema */
+body.dark-mode .scheme-image {
+    background-color: #1f2937;
+}
+
+/* --- Statistik Section --- */
+.stats-section {
+    background: var(--bg-light);
+    padding: 80px 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    text-align: center;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    padding: 40px 30px;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.stat-card:hover {
+    background: var(--card-bg);
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(79, 70, 229, 0.2);
+    border-color: var(--primary-color);
+}
+
+.stat-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 10px 0;
+    color: var(--text-main);
+    animation: countUp 1s ease-out;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Specific for News Cards */
+#news .card {
+    padding: 0;
+    text-align: left;
+    overflow: hidden;
+    position: relative;
+}
+
+#news .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#news .card:hover img {
+    transform: scale(1.1) rotate(1deg);
+}
+
+#news .card h4, #news .card p {
+    padding: 0 20px;
+}
+
+#news .card h4 {
+    margin-top: 20px;
+    transition: color 0.3s ease;
+}
+
+#news .card:hover h4 {
+    color: var(--primary-color);
+}
+
+#news .card p {
+    margin-bottom: 20px;
+}
+
+/* Center news section description */
+#news > .container > p {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* --- Call To Action / Kontak --- */
+.cta {
+    text-align: center;
+    padding: 80px 20px;
+    background: var(--bg-light);
+    color: var(--text-main);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cta h2 {
+    color: var(--text-main);
+    position: relative;
+    z-index: 1;
+}
+
+.cta p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 1;
+}
+
+.cta .btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    position: relative;
+    z-index: 1;
+}
+
+.cta .btn:hover {
+    background-color: var(--primary-hover);
+}
+
+/* --- Footer --- */
+footer {
+    background-color: #1e293b;
+    color: #cbd5e1;
+    padding: 60px 0 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #4f46e5, transparent);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+footer h3, footer h4 {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+footer h3:hover, footer h4:hover {
+    color: var(--primary-color);
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer ul li {
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+footer ul li:hover {
+    color: #fff;
+    padding-left: 8px;
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #334155;
+    padding-top: 20px;
+    font-size: 0.9rem;
+}
+
+/* --- Keuntungan Section --- */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.benefit-card {
+    background: var(--card-bg);
+    padding: 35px 25px;
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.benefit-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(135deg, var(--primary-color), #7c3aed);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 50%;
+}
+
+.benefit-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(79, 70, 229, 0.2);
+}
+
+.benefit-card:hover::before {
+    opacity: 0.1;
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color), #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.benefit-card h3 {
+    color: var(--text-main);
+    margin: 15px 0;
+    font-size: 1.2rem;
+}
+
+.benefit-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 768px) {
+    .menu-toggle { display: block; }
+    
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--nav-bg);
+        text-align: center;
+        padding: 20px 0;
+        box-shadow: var(--shadow-md);
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-card {
+        padding: 30px 20px;
+    }
+
+    .stat-icon {
+        font-size: 2.5rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .benefit-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .benefit-card {
+        padding: 25px 20px;
+    }
+
+    .dark-toggle-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+}
+/* --- Animasi Scroll (Kesan Tenang & Lembut) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Keyframe Animations --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(79, 70, 229, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(79, 70, 229, 0.5);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes countUp {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* --- Scroll Progress Bar --- */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #4f46e5, #7c3aed, #4f46e5);
+    background-size: 200% 100%;
+    width: 0%;
+    z-index: 999;
+    animation: gradientShift 3s ease infinite;
+}
+
+/* --- Hero Content Animations --- */
+.hero-content h1 {
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.hero-content p {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* --- Animated Icon --- */
+.card i {
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+.card:hover i {
+    animation: bounce 0.6s ease-in-out infinite;
+    color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+/* --- Enhanced Card Animation --- */
+.card {
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+/* --- Scheme Card Enhancement --- */
+.scheme-card {
+    position: relative;
+}
+
+.scheme-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), transparent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.scheme-card:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* --- Button Animation --- */
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: left 0.3s ease;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+/* --- Navigation Animation --- */
+nav a {
+    position: relative;
+    display: inline-block;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* --- Loading Animation --- */
+.loading {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    margin: 0 3px;
+    animation: pulse 1.4s infinite;
+}
+
+.loading:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loading:nth-child(3) {
+    animation-delay: 0.4s;
+}
