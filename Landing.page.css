@@ -14,26 +14,25 @@
 }
 
 body {
-    background-color: var(--bg-light); /* Sekarang body berwarna terang */
-    overflow-x: hidden; /* Mencegah scroll menyamping */
+    background-color: var(--bg-light); 
+    overflow-x: hidden; 
 }
 
 /* --- Header / Navbar --- */
 .header {
-    background-color: transparent; /* Awalnya transparan */
-    position: fixed; /* Menjadi fixed agar menimpa background hero section */
+    background-color: transparent; 
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
     z-index: 100;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transisi halus */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
 }
 
-/* Class baru ini akan dipanggil oleh JavaScript saat layar di-scroll */
 .header.scrolled {
-    background-color: rgba(255, 255, 255, 0.95); /* Berubah menjadi putih agak transparan */
-    backdrop-filter: blur(10px); /* Efek kaca/blur */
-    box-shadow: 0 2px 15px rgba(0,0,0,0.05); /* Muncul bayangan */
+    background-color: rgba(255, 255, 255, 0.95); 
+    backdrop-filter: blur(10px); 
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05); 
 }
 
 .navbar {
@@ -46,7 +45,6 @@ body {
     transition: padding 0.3s ease;
 }
 
-/* Saat di-scroll, padding navbar sedikit mengecil agar terlihat lebih ramping */
 .header.scrolled .navbar {
     padding: 15px 50px;
 }
@@ -71,12 +69,12 @@ body {
 .hero-section {
     position: relative;
     width: 100%;
-    min-height: 100vh; /* Ubah ke 100vh agar penuh 1 layar */
+    min-height: 100vh; 
     background: radial-gradient(circle at 50% 20%, #ffffff 20%, #e0e8ff 60%, #5a7fff 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 130px; /* Diperbesar jarak atasnya karena navbar sekarang melayang menimpa bagian ini */
+    padding-top: 130px; 
     overflow: hidden; 
 }
 
@@ -122,22 +120,6 @@ body {
 }
 .btn-primary:hover { opacity: 0.8; }
 
-.btn-icon {
-    background-color: #000;
-    color: white;
-    text-decoration: none;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    transition: opacity 0.3s;
-}
-.btn-icon:hover { opacity: 0.8; }
-
-/* Giant Background Text (Watermark) */
 .bg-text {
     position: absolute;
     top: 50%;
@@ -156,14 +138,13 @@ body {
 /* --- Laptop Mockup CSS --- */
 .laptop-wrapper {
     position: relative;
-    margin: 60px auto 100px; /* Tambah margin bawah agar tidak menabrak section berikutnya */
+    margin: 60px auto 100px; 
     z-index: 5;
     width: 760px; 
     perspective: 1000px; 
-    transform: scale(0.9); /* Dikecilkan sedikit agar fit di layar */
+    transform: scale(0.9); 
 }
 
-/* ... (Kode CSS Layar, Base, Browser Bar, dan Kartu Sertifikat TETAP SAMA seperti sebelumnya) ... */
 .laptop-screen { width: 100%; height: 450px; background: linear-gradient(135deg, #1b45ff 0%, #0a1f8f 100%); border-radius: 16px 16px 0 0; border: 12px solid #111; border-bottom: 15px solid #222; position: relative; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
 .laptop-base { width: 112%; margin-left: -6%; height: 24px; background: #e4e4e7; border-radius: 2px 2px 16px 16px; position: relative; box-shadow: inset 0 -4px 6px rgba(0,0,0,0.1), 0 30px 60px rgba(0,0,0,0.4); }
 .laptop-trackpad { position: absolute; width: 100px; height: 6px; background: #a1a1aa; top: 0; left: 50%; transform: translateX(-50%); border-radius: 0 0 6px 6px; }
@@ -188,9 +169,9 @@ body {
 .card-right h4 { font-size: 15px; font-weight: 600; }
 .card-right p { font-size: 12px; color: #e2e8f0; margin-top: 3px; }
 
-/* --- Section Baru: Tentang Kami --- */
+/* --- Section Tentang Kami --- */
 .about-section {
-    background-color: #ffffff; /* Latar belakang putih bersih */
+    background-color: #ffffff; 
     padding: 100px 50px;
     width: 100%;
 }
@@ -200,7 +181,7 @@ body {
     margin: 0 auto;
     display: flex;
     align-items: center;
-    gap: 80px; /* Jarak antara gambar dan teks */
+    gap: 80px; 
 }
 
 .about-image {
@@ -212,7 +193,7 @@ body {
 .about-image img {
     max-width: 100%;
     height: auto;
-    max-height: 350px; /* Menjaga ukuran gambar agar tidak terlalu besar */
+    max-height: 350px; 
     object-fit: contain;
 }
 
@@ -251,9 +232,148 @@ body {
     color: white;
 }
 
+/* --- Global Styles untuk Section Baru --- */
+.aspek-section, .skema-section, .berita-section {
+    padding: 80px 50px;
+    width: 100%;
+}
+
+.skema-section {
+    background-color: #f8fafc; 
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 12px;
+}
+
+.section-header p {
+    font-size: 15px;
+    color: var(--text-muted);
+}
+
+.grid-3-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px;
+}
+
+/* --- Section 1: Aspek Penilaian CSS --- */
+.aspek-card {
+    text-align: center;
+    padding: 20px;
+}
+
+.aspek-icon {
+    width: 90px;
+    height: 90px;
+    background-color: #f3f4fa; 
+    color: var(--primary-blue);
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    margin: 0 auto 25px auto;
+}
+
+.aspek-card h4 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 15px;
+}
+
+.aspek-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-muted);
+}
+
+/* --- Section 2 & 3: Daftar Skema & Berita CSS --- */
+.skema-card, .berita-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f1f5f9;
+}
+
+.skema-card:hover, .berita-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.skema-img, .berita-img {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skema-content, .berita-content {
+    padding: 25px;
+}
+
+.skema-category {
+    font-size: 12px;
+    color: var(--primary-blue);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.skema-content h3, .berita-content h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.skema-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 25px;
+    border-top: 1px solid #f1f5f9;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.berita-content p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.btn-readmore {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.btn-readmore:hover {
+    color: var(--primary-blue);
+}
+
 /* --- Section Footer --- */
 .footer {
-    background-color: #1a1e29; /* Warna latar belakang gelap (Navy/Dark Blue) */
+    background-color: #1a1e29; 
     color: #e2e8f0;
     padding: 70px 50px 20px;
     margin-top: 50px;
@@ -263,7 +383,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1.5fr; /* Membagi menjadi 4 kolom dengan proporsi berbeda */
+    grid-template-columns: 2fr 1fr 1fr 1.5fr; 
     gap: 40px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 40px;
@@ -276,7 +396,6 @@ body {
     margin-bottom: 25px;
 }
 
-/* Kolom 1 (Brand) */
 .footer-logo {
     display: flex;
     align-items: center;
@@ -287,9 +406,9 @@ body {
 .footer-logo img {
     width: 50px;
     height: 50px;
-    border-radius: 50%; /* Membuat logo melingkar jika aslinya kotak */
+    border-radius: 50%; 
     object-fit: contain;
-    background: white; /* Memberi background putih agar logo terlihat jelas */
+    background: white; 
     padding: 5px;
 }
 
@@ -308,7 +427,6 @@ body {
     padding-right: 20px;
 }
 
-/* Sosial Media Ikon Sederhana */
 .social-links {
     display: flex;
     gap: 12px;
@@ -333,10 +451,9 @@ body {
 .social-links a:hover {
     background: var(--primary-blue);
     border-color: var(--primary-blue);
-    transform: translateY(-3px); /* Efek melayang saat disorot */
+    transform: translateY(-3px); 
 }
 
-/* Kolom Menu Links */
 .footer-col ul {
     list-style: none;
 }
@@ -355,7 +472,6 @@ body {
     gap: 8px;
 }
 
-/* Menambahkan panah kecil sebelum teks menu */
 .footer-col ul li a::before {
     content: "›";
     font-size: 18px;
@@ -366,7 +482,6 @@ body {
     color: #ffffff;
 }
 
-/* Kolom Call to Action (Sertifikasi) */
 .cta-col p {
     font-size: 14px;
     color: #cbd5e1;
@@ -391,7 +506,6 @@ body {
     box-shadow: 0 5px 15px rgba(27, 69, 255, 0.4);
 }
 
-/* Bagian Bawah Copyright */
 .footer-bottom {
     max-width: 1200px;
     margin: 0 auto;
