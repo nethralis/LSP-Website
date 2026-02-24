@@ -537,3 +537,22 @@ body {
 .scroll-top:hover {
     opacity: 0.8;
 }
+
+
+/* State awal elemen sebelum di-scroll (Terganti otomatis oleh JS) */
+.reveal-item {
+    opacity: 0;
+    transform: translateY(60px); /* Posisi awal agak ke bawah */
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); /* Efek transisi halus */
+}
+
+/* State saat elemen sudah masuk ke layar (Ditambahkan oleh JS) */
+.reveal-active {
+    opacity: 1;
+    transform: translateY(0); /* Kembali ke posisi semula */
+}
+
+/* Membuat efek antrean (delay) agar kartu muncul bergantian (Card 1, 2, 3) */
+.grid-3-container > div:nth-child(1) { transition-delay: 0.1s; }
+.grid-3-container > div:nth-child(2) { transition-delay: 0.3s; }
+.grid-3-container > div:nth-child(3) { transition-delay: 0.5s; }
